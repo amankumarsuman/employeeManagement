@@ -42,11 +42,20 @@ const Profile = () => {
   console.log(userData);
   return (
     <Paper
-      sx={{ height: "430px", width: "30%", textAlign: "center", marginTop: 10 }}
+      sx={{
+        width: "30%",
+        textAlign: "center",
+        marginTop: 10,
+        paddingBottom: "20px",
+      }}
       elevation={10}
       className="column"
     >
       <Grid container sx={{ marginTop: "20px" }} spacing={2}>
+        <Grid item xs={12}>
+          <img width="100px" src={userDataInput.image} alt="image" />
+        </Grid>
+
         <Grid item xs={6}>
           <TextField
             label={"First Name"}
@@ -98,6 +107,7 @@ const Profile = () => {
           />
         </Grid>
       </Grid>
+      <Button variant="contained">Edit</Button>
     </Paper>
   );
 };

@@ -4,11 +4,12 @@ const mongoose = require("mongoose");
 const UserDetails = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 const JWT_SECRET =
   "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe";
-router.post("/signup", (req, res, next) => {
-  console.log(req.body);
+router.post("/signup", upload.single("image"), (req, res, next) => {
+  console.log(req.file);
   // //for encrypted password
   //  bcrypt.hash(req.body.password,10,(err,hash)=>{
 
@@ -47,7 +48,7 @@ router.post("/signup", (req, res, next) => {
     fname: req.body.fname,
     lname: req.body.lname,
     offEmail: req.body.offEmail,
-    addr: req.body.offEmail,
+    addr: req.body.addr,
     mobile: req.body.mobile,
     userType: req.body.userType,
     dob: req.body.dob,
