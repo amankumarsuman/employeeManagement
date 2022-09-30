@@ -42,6 +42,7 @@ const Profile = () => {
   console.log(status);
   const [userDataInput, setUserDataInput] = useState(userData);
   const [edit, setEdit] = useState(status);
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserDataInput({ ...userDataInput, [name]: value });

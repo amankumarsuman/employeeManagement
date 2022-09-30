@@ -5,6 +5,10 @@ const bodyParser = require("body-parser");
 const productRoutes = require("./api/routes/products");
 const orderRoutes = require("./api/routes/orders");
 const userRoutes = require("./api/routes/user");
+const inductionRoutes=require("./api/routes/induction");
+const employeeRoutes=require("./api/routes/employee");
+const leaveRoutes=require("./api/routes/leave");
+const holidayRoutes=require("./api/routes/holiday");
 const mongoose = require("mongoose");
 
 // mongoose.connect(
@@ -38,6 +42,10 @@ app.use(bodyParser.json());
 app.use("/products", productRoutes);
 app.use("/order", orderRoutes);
 app.use("/user", userRoutes);
+app.use("/induction", inductionRoutes);
+app.use("/employee", employeeRoutes);
+app.use("/leave", leaveRoutes);
+app.use("/holiday", holidayRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not Found");
