@@ -1,13 +1,13 @@
 const initialState = {
   LoggedUserData: {},
+  status: false,
 };
 
 export const loggedInReducer = (state = initialState, action) => {
   const { type, payload } = action;
+  console.log(payload);
   switch (type) {
     case "LOGGED_USER_DATA": {
-      //   let { data } = payload;
-      console.log(payload);
       return {
         ...state,
         LoggedUserData: {
@@ -16,7 +16,15 @@ export const loggedInReducer = (state = initialState, action) => {
         },
       };
     }
-    // console.log(state.userData);
+    case "UPDATE_USER_DETAILS": {
+      return {
+        ...state,
+        LoggedUserData: {
+          ...state.LoggedUserData,
+          LoggedUserData: payload,
+        },
+      };
+    }
 
     default:
       return state;

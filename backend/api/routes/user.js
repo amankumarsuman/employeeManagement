@@ -213,4 +213,68 @@ router.post("/login", async (req, res, next) => {
 //   } catch (error) {}
 // });
 
+router.put("/:userId", (req, res, next) => {
+  const id = req.params.userId;
+  // const updateOps = {};
+  // for (const ops of req.body) {
+  //   updateOps[ops.propName] = ops.value;
+  // }
+  // Product.updateOne(
+  //   { _id: id },
+  //   // { $set: { name: req.body.newName, price: req.body.newPrice } }
+  //   { $set: updateOps }
+  // )
+  //   .exec()
+  //   .then((result) => {
+  //     console.log(result);
+  //     result.status(200).json(result);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //     res.status(500).json({ error: err });
+  //   });
+  // res.status(200).json({
+  //   message: "updated User!",
+  // });
+  const {
+    email,
+    password,
+    fname,
+    lname,
+    offEmail,
+    addr,
+    mobile,
+    userType,
+    dob,
+  } = req.body;
+  console.log(offEmail);
+  UserDetails.findOneAndUpdate(
+    { _id: id },
+    {
+      $set: {
+        email,
+        password,
+        fname,
+        lname,
+        offEmail,
+        addr,
+        mobile,
+        userType,
+        dob,
+      },
+    },
+    { new: true },
+    (err, data) => {
+      if (err) {
+        res.status(500).json({ error: err });
+      } else {
+        if (data === null) {
+          res.send("No data present with this ID");
+        } else {
+          res.send({ msg: "User Data Updated Successfully", data: data });
+        }
+      }
+    }
+  );
+});
 module.exports = router;

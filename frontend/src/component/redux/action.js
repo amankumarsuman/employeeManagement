@@ -17,3 +17,10 @@ export const loggedUserData = (payload) => {
     payload: payload,
   };
 };
+export const updateUserDetails = (payload) => {
+  console.log(payload);
+  return {
+    type: "UPDATE_USER_DETAILS",
+    payload: payload,
+  };
+};
