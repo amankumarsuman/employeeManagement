@@ -58,7 +58,7 @@ router.post("/signup", upload.single("image"), (req, res, next) => {
     .then((result) => {
       res.status(201).json({
         message: "Registered successfully",
-        createdProduct: {
+        UserCreated: {
           _id: result.id,
           email: result.email,
           password: result.password,

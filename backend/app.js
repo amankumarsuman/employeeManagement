@@ -9,6 +9,9 @@ const inductionRoutes=require("./api/routes/induction");
 const employeeRoutes=require("./api/routes/employee");
 const leaveRoutes=require("./api/routes/leave");
 const holidayRoutes=require("./api/routes/holiday");
+const jobGradeWiseLeaveRoutes=require("./api/routes/jobGradeWiseLeave")
+const jobGradeWiseHolidayRoutes=require("./api/routes/jobGradeWiseHoliday")
+const jobGradeRoutes=require("./api/routes/jobGrade")
 const mongoose = require("mongoose");
 
 // mongoose.connect(
@@ -46,6 +49,9 @@ app.use("/induction", inductionRoutes);
 app.use("/employee", employeeRoutes);
 app.use("/leave", leaveRoutes);
 app.use("/holiday", holidayRoutes);
+app.use("/jobGradeWiseLeave", jobGradeWiseLeaveRoutes);
+app.use("/jobGradeWiseHoliday", jobGradeWiseHolidayRoutes);
+app.use("/jobGrade", jobGradeRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not Found");
